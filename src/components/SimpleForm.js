@@ -1,4 +1,5 @@
-import useInput from '../hooks/use-input';
+// import useInput from '../hooks/use-input';
+import useInputReducer from '../hooks/use-input-reducer';
 import Input from './Input';
 
 const SimpleInput = (props) => {
@@ -19,8 +20,10 @@ const SimpleInput = (props) => {
     return { formIsValid, formReset };
   };
 
-  const [inputNameStates, inputNameProps] = useInput(inputNameValidation);
-  const [inputEmailStates, inputEmailProps] = useInput(inputEmailValidation);
+  const [inputNameStates, inputNameProps] =
+    useInputReducer(inputNameValidation);
+  const [inputEmailStates, inputEmailProps] =
+    useInputReducer(inputEmailValidation);
   const { formIsValid, formReset } = formGet(inputNameStates, inputEmailStates);
 
   const inputFormHandler = (e) => {
