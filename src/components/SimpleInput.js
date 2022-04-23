@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const SimpleInput = (props) => {
   const [inputName, setInputName] = useState('');
   const [inputNameIsTouched, setInputNameIsTouched] = useState(false);
-  const [formIsValid, setFormIsValid] = useState(false);
 
   const inputNameIsValid = inputName.trim() !== '';
   const inputNameIsInvalid = !inputNameIsValid && inputNameIsTouched;
@@ -11,9 +10,8 @@ const SimpleInput = (props) => {
   const inputNameHandler = (e) => setInputName(e.target.value);
   const inputNameBlurHandler = (e) => setInputNameIsTouched(true);
 
-  useEffect(() => {
-    inputNameIsValid ? setFormIsValid(true) : setFormIsValid(false);
-  }, [inputNameIsValid]);
+  let formIsValid = false;
+  if (inputNameIsValid) formIsValid = true;
 
   const inputFormHandler = (e) => {
     e.preventDefault();
