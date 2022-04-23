@@ -31,6 +31,10 @@ body {
   display: block;
 }
 
+.form-control label::first-letter {
+  text-transform: uppercase;
+}
+
 .form-control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
